@@ -15,6 +15,7 @@ steps:
       - |
         tar -xJf linux.tar.xz --strip-components=1
         rm linux.tar.xz
+        patch -p0 < /pkg/patches/waveshare.patch
 
         mkdir /bin
         ln -sv /toolchain/bin/bash /bin/bash
