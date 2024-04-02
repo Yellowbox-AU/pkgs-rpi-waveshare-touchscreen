@@ -15,6 +15,9 @@ steps:
 
         # https://bugzilla.kernel.org/show_bug.cgi?id=218647
         patch -p1 < /pkg/patches/btf_ids.patch
+
+        # Add support for waveshare touchscreens on rpi
+        patch -p0 < /pkg/patches/waveshare.patch
     build:
       {{ if .BUILD_ARG_KERNEL_TARGET }}
       - |
