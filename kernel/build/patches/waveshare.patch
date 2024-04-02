@@ -32,10 +32,10 @@ index 433e93d57949..dacc6d130421 100644
  obj-$(CONFIG_DRM_PANEL_XINPENG_XPP055C272) += panel-xinpeng-xpp055c272.o
 diff --git drivers/gpu/drm/panel/panel-waveshare-dsi.c drivers/gpu/drm/panel/panel-waveshare-dsi.c
 new file mode 100644
-index 000000000000..08ccc761ef3f
+index 000000000000..835b80a6a0ae
 --- /dev/null
 +++ drivers/gpu/drm/panel/panel-waveshare-dsi.c
-@@ -0,0 +1,435 @@
+@@ -0,0 +1,434 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * Copyright © 2023 Raspberry Pi Ltd
@@ -310,8 +310,7 @@ index 000000000000..08ccc761ef3f
 +					      &ws_panel_bl_ops, &props);
 +}
 +
-+static int ws_panel_probe(struct i2c_client *i2c,
-+			  const struct i2c_device_id *id)
++static int ws_panel_probe(struct i2c_client *i2c)
 +{
 +	struct device *dev = &i2c->dev;
 +	struct ws_panel *ts;
