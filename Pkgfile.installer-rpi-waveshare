@@ -1,5 +1,7 @@
 FROM scratch AS customization
-COPY --from=ghcr.io/yellowbox-au/kernel:v1.7.0-alpha.1-waveshare /lib/modules /lib/modules
+ARG USERNAME
+ARG KERNEL_VERSION
+COPY --from=ghcr.io/${USERNAME}/kernel:${KERNEL_VERSION} /lib/modules /lib/modules
 
 FROM ghcr.io/siderolabs/installer:v1.7.0-alpha.1
-COPY --from=ghcr.io/yellowbox-au/kernel:v1.7.0-alpha.1-waveshare /boot/vmlinuz /usr/install/${TARGETARCH}/vmlinuz
+COPY --from=ghcr.io/${USERNAME}/kernel:${KERNEL_VERSION} /boot/vmlinuz /usr/install/${TARGETARCH}/vmlinuz
