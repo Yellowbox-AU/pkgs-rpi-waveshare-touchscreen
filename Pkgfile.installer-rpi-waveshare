@@ -1,7 +1,8 @@
-FROM scratch AS customization
 ARG USERNAME
 ARG KERNEL_VERSION
-COPY --from=ghcr.io/${USERNAME}/kernel:${KERNEL_VERSION} /lib/modules /lib/modules
+FROM ghcr.io/${USERNAME}/kernel:${KERNEL_VERSION} as kernel
+FROM scratch AS customization
+COPY --from=kernel /lib/modules /lib/modules
 
 FROM ghcr.io/siderolabs/installer:v1.7.0-alpha.1
-COPY --from=ghcr.io/${USERNAME}/kernel:${KERNEL_VERSION} /boot/vmlinuz /usr/install/${TARGETARCH}/vmlinuz
+COPY --from=kernel /boot/vmlinuz /usr/install/${TARGETARCH}/vmlinuz
