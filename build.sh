@@ -1,4 +1,4 @@
 #!/bin/sh
-INSTALLER_VERSION=1.7.0-alpha.1-rpi-waveshare
+INSTALLER_VERSION=v1.7.0-alpha.1-waveshare
 IMAGE_NAME="ghcr.io/yellowbox-au/talos-installer:$INSTALLER_VERSION"
-DOCKER_BUILDKIT=0 docker build --build-arg RM="/lib/modules" -t "$IMAGE_NAME" . && docker push "$IMAGE_NAME"
+docker build --file Pkgfile.installer-rpi-waveshare --build-arg RM="/lib/modules" -t "$IMAGE_NAME" . && docker push "$IMAGE_NAME"
